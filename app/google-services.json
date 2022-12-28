@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "859677480549",
+    "project_id": "user-registration-4157d",
+    "storage_bucket": "user-registration-4157d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:859677480549:android:032939a997ae8b4b9b588c",
+        "android_client_info": {
+          "package_name": "com.charging.userregistration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "859677480549-75aj1b9n4fa3gse68gs10832731408kv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBicO7mhySU1zmJSTx0Z94_wnCcs3r_Vyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "859677480549-75aj1b9n4fa3gse68gs10832731408kv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

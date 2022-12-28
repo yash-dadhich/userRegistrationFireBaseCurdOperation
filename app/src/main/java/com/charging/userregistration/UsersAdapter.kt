@@ -38,4 +38,8 @@ class UsersAdapter(val context: Context, val usersList: ArrayList<Users>) :
         return usersList.size
     }
 
+    fun getUserId(position:Int):String
+    {
+        return usersList[position].userId
+    }
 }

@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.charging.userregistration.databinding.ActivityMainBinding
 import com.google.firebase.database.*
 
@@ -32,6 +34,26 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity,AddUserActivity::class.java)
             startActivity(intent)
         }
+
+        ItemTouchHelper(object:
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val id = userAdapter.getUserId(viewHolder.adapterPosition)
+                myReference.child(id).removeValue()
+                Toast.makeText(applicationContext, "User Deleted", Toast.LENGTH_SHORT).show()
+            }
+
+        }).attachToRecyclerView(binding.recyclerView)
+
+
         retrieveData()
 
     }

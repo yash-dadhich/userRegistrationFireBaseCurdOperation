@@ -1,11 +1,15 @@
 package com.charging.userregistration
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -57,6 +61,41 @@ class MainActivity : AppCompatActivity() {
         retrieveData()
 
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_delete_all,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.deleteAll){
+            showDialogMessage()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun showDialogMessage(){
+        val dialogMessage = AlertDialog.Builder(this)
+        dialogMessage.setTitle("Delete all Users")
+        dialogMessage.setMessage("If click Yes, all users will be deleted." +
+                "If you want to delete a specific user, you can swipe the item left or right that you want to delete.")
+        dialogMessage.setNegativeButton("Cancel",DialogInterface.OnClickListener{ dialogInterface,i->
+            dialogInterface.cancel()
+        })
+        dialogMessage.setPositiveButton("Yes",DialogInterface.OnClickListener{ dialogInterface,i->
+            myReference.removeValue().addOnCompleteListener{ task ->
+                if (task.isSuccessful){
+                    userAdapter.notifyDataSetChanged()
+                    Toast.makeText(applicationContext, "All users deleted...", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+
+        dialogMessage.create().show()
+
+    }
+
 
     private fun retrieveData(){
         myReference.addValueEventListener(object :ValueEventListener{

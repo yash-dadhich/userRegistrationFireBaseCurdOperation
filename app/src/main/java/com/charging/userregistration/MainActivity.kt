@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charging.userregistration.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class MainActivity : AppCompatActivity() {
@@ -54,14 +55,9 @@ class MainActivity : AppCompatActivity() {
                 myReference.child(id).removeValue()
                 Toast.makeText(applicationContext, "User Deleted", Toast.LENGTH_SHORT).show()
             }
-
         }).attachToRecyclerView(binding.recyclerView)
-
-
         retrieveData()
-
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_delete_all,menu)
@@ -71,6 +67,11 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.deleteAll){
             showDialogMessage()
+        }
+        if (item.itemId == R.id.logout){
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this@MainActivity,SignInActivity::class.java))
+            finish()
         }
         return super.onOptionsItemSelected(item)
     }

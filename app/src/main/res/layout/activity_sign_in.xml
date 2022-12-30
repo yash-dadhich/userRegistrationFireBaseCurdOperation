@@ -25,11 +25,22 @@
         android:hint="Please enter your password"
         android:inputType="textPassword" />
 
+    <TextView
+        android:id="@+id/txtForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="Forgot Password?"
+        android:layout_below="@id/etPassword"
+        android:textColor="#0022FF"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"/>
+
     <Button
         android:id="@+id/btnSignIn"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etPassword"
+        android:layout_below="@id/txtForgotPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:text="Sign In"

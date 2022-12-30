@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun showDialogMessage(){
+    private fun showDialogMessage(){
         val dialogMessage = AlertDialog.Builder(this)
         dialogMessage.setTitle("Delete all Users")
         dialogMessage.setMessage("If click Yes, all users will be deleted." +

@@ -56,7 +56,7 @@ class SignInActivity : AppCompatActivity() {
             }
         }
     }
-    
+
 
     private fun showDialog() {
         val dialog = Dialog(this, android.R.style.Theme_DeviceDefault_Light_Dialog_MinWidth)
@@ -96,7 +96,4 @@ class SignInActivity : AppCompatActivity() {
             finish()
         }
     }
-
-
-
 }

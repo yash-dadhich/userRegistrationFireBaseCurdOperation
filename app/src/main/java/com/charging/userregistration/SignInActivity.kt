@@ -56,24 +56,7 @@ class SignInActivity : AppCompatActivity() {
             }
         }
     }
-
-  /*  private fun showDialogMessage() {
-        val dialogMessage = AlertDialog.Builder(this)
-        dialogMessage.setTitle("Delete all Users")
-        dialogMessage.setMessage(
-            "If click Yes, all users will be deleted." +
-                    "If you want to delete a specific user, you can swipe the item left or right that you want to delete."
-        )
-        dialogMessage.setNegativeButton("Cancel",
-            DialogInterface.OnClickListener { dialogInterface, i ->
-                dialogInterface.cancel()
-            })
-        dialogMessage.setPositiveButton(
-            "Yes",
-            DialogInterface.OnClickListener { dialogInterface, i ->
-
-            })
-    }*/
+    
 
     private fun showDialog() {
         val dialog = Dialog(this, android.R.style.Theme_DeviceDefault_Light_Dialog_MinWidth)
@@ -93,7 +76,7 @@ class SignInActivity : AppCompatActivity() {
                         Toast.LENGTH_LONG
                     ).show()
                 } else {
-                    Toast.makeText(     
+                    Toast.makeText(
                         applicationContext,
                         task.exception?.message.toString(),
                         Toast.LENGTH_SHORT
@@ -102,6 +85,16 @@ class SignInActivity : AppCompatActivity() {
             }
         }
         dialog.show()
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val user =  auth.currentUser
+        if (user!= null){
+            startActivity(Intent(this@SignInActivity,MainActivity::class.java))
+            finish()
+        }
     }
 
 
